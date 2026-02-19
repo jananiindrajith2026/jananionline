@@ -1,13 +1,6 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Send } from "lucide-react";
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5 },
-};
+import { Mail, Linkedin, Github, Send, ArrowUpRight } from "lucide-react";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -21,108 +14,127 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-secondary/50">
-      <div className="max-w-6xl mx-auto">
-        <motion.div {...fadeInUp} className="text-center mb-14">
-          <p className="text-sm font-medium text-primary tracking-widest uppercase mb-2">Get In Touch</p>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">Let's Connect</h2>
+    <section id="contact" className="section-padding relative overflow-hidden">
+      {/* CTA Banner */}
+      <div className="max-w-6xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative rounded-3xl bg-gradient-to-br from-primary to-hero-pink p-10 md:p-14 overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 w-60 h-60 bg-primary-foreground/10 blob-shape blur-xl" />
+          <div className="absolute bottom-0 left-0 w-40 h-40 bg-primary-foreground/5 blob-shape-2 blur-lg" />
+
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary-foreground mb-4">
+              Got A Project!<br />Let's Talk
+            </h2>
+            <p className="text-primary-foreground/80 max-w-md mb-6 text-sm leading-relaxed">
+              I'm always open to new opportunities, collaborations, and exciting projects. Let's create something awesome together!
+            </p>
+            <button
+              onClick={() => document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" })}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary-foreground text-primary font-bold text-sm hover:opacity-90 transition-opacity"
+            >
+              Contact <ArrowUpRight size={16} />
+            </button>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Contact Form & Info */}
+      <div id="contact-form" className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <span className="inline-block text-xs font-bold text-primary tracking-widest uppercase bg-soft-purple px-4 py-1.5 rounded-full mb-3">Contact</span>
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
+            Let's <span className="gradient-text">Connect</span>
+          </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <motion.div {...fadeInUp} className="space-y-6">
-            <p className="text-muted-foreground leading-relaxed">
-              I'm always open to new opportunities and collaborations. Feel free to reach out if you'd like to work together or just say hello!
+          {/* Social links */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-4"
+          >
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              Feel free to reach out if you'd like to work together or just say hello! I'd love to hear from you.
             </p>
 
-            <div className="space-y-4">
+            {[
+              { icon: Mail, label: "Email", value: "janani@example.com", href: "mailto:janani@example.com", bg: "bg-soft-purple" },
+              { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/janani", href: "https://linkedin.com", bg: "bg-soft-blue" },
+              { icon: Github, label: "GitHub", value: "github.com/janani", href: "https://github.com", bg: "bg-soft-yellow" },
+            ].map((item) => (
               <a
-                href="mailto:janani@example.com"
-                className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border hover:card-shadow-hover transition-shadow"
-              >
-                <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center flex-shrink-0">
-                  <Mail size={18} className="text-accent-foreground" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Email</p>
-                  <p className="text-sm font-medium text-foreground">janani@example.com</p>
-                </div>
-              </a>
-
-              <a
-                href="https://linkedin.com"
-                target="_blank"
+                key={item.label}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border hover:card-shadow-hover transition-shadow"
+                className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-border card-hover"
               >
-                <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center flex-shrink-0">
-                  <Linkedin size={18} className="text-accent-foreground" />
+                <div className={`w-12 h-12 rounded-xl ${item.bg} flex items-center justify-center flex-shrink-0`}>
+                  <item.icon size={20} className="text-foreground" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground">LinkedIn</p>
-                  <p className="text-sm font-medium text-foreground">linkedin.com/in/janani</p>
+                  <p className="text-xs text-muted-foreground font-medium">{item.label}</p>
+                  <p className="text-sm font-bold text-foreground">{item.value}</p>
                 </div>
               </a>
-
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border hover:card-shadow-hover transition-shadow"
-              >
-                <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center flex-shrink-0">
-                  <Github size={18} className="text-accent-foreground" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">GitHub</p>
-                  <p className="text-sm font-medium text-foreground">github.com/janani</p>
-                </div>
-              </a>
-            </div>
+            ))}
           </motion.div>
 
-          {/* Contact Form */}
-          <motion.div {...fadeInUp}>
+          {/* Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <form onSubmit={handleSubmit} className="space-y-4">
+              {[
+                { id: "name", label: "Name", type: "text", placeholder: "Your name" },
+                { id: "email", label: "Email", type: "email", placeholder: "your@email.com" },
+              ].map((field) => (
+                <div key={field.id}>
+                  <label htmlFor={field.id} className="block text-sm font-semibold text-foreground mb-1.5">{field.label}</label>
+                  <input
+                    id={field.id}
+                    type={field.type}
+                    required
+                    value={formData[field.id as keyof typeof formData]}
+                    onChange={(e) => setFormData({ ...formData, [field.id]: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
+                    placeholder={field.placeholder}
+                  />
+                </div>
+              ))}
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1.5">Name</label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">Email</label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
-                  placeholder="your@email.com"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1.5">Message</label>
+                <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-1.5">Message</label>
                 <textarea
                   id="message"
                   required
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring transition-shadow resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring transition-shadow resize-none"
                   placeholder="Your message..."
                 />
               </div>
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:shadow-lg hover:shadow-primary/25 transition-all"
               >
                 {submitted ? "Message Sent! ✓" : <><Send size={16} /> Send Message</>}
               </button>
