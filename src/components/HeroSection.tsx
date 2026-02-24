@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Mail, Sparkles } from "lucide-react";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import profilePhoto from "@/assets/profile-photo.png";
 
 const HeroSection = () => {
   const scrollTo = (id: string) => {
