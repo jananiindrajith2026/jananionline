@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Folder, Layout, ShoppingCart, BookOpen, Image, Calculator } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
+
+import projectPortfolio from "@/assets/project-portfolio.png";
+import projectLanding from "@/assets/project-landing.png";
+import projectBlog from "@/assets/project-blog.png";
+import projectEcommerce from "@/assets/project-ecommerce.png";
+import projectGallery from "@/assets/project-gallery.png";
+import projectCalculator from "@/assets/project-calculator.png";
 
 const projects = [
   {
@@ -7,42 +14,42 @@ const projects = [
     description: "A clean, responsive personal portfolio page built to showcase projects and skills with a minimal design approach.",
     tech: ["HTML", "CSS"],
     color: "from-primary/10 to-hero-pink/10",
-    icon: Folder,
+    logo: projectPortfolio,
   },
   {
     title: "Product Landing Page",
     description: "A simple static landing page with structured layout, call-to-action sections, and responsive design.",
     tech: ["HTML", "CSS"],
     color: "from-accent/20 to-soft-yellow",
-    icon: Layout,
+    logo: projectLanding,
   },
   {
     title: "Responsive Blog Layout",
     description: "A practice project focused on responsive grid layouts, typography, and content-first web design.",
     tech: ["HTML", "CSS"],
     color: "from-soft-blue to-soft-purple",
-    icon: BookOpen,
+    logo: projectBlog,
   },
   {
     title: "E-Commerce Product Page",
     description: "A static product showcase page with image gallery, pricing section, and add-to-cart button layout.",
     tech: ["HTML", "CSS"],
     color: "from-hero-pink/10 to-accent/10",
-    icon: ShoppingCart,
+    logo: projectEcommerce,
   },
   {
     title: "Photo Gallery Website",
     description: "A responsive image gallery with grid and masonry-style layouts, hover effects, and lightbox-inspired design.",
     tech: ["HTML", "CSS", "JavaScript"],
     color: "from-soft-purple to-primary/10",
-    icon: Image,
+    logo: projectGallery,
   },
   {
     title: "Simple Calculator",
     description: "An interactive calculator with basic arithmetic operations, built to practice JavaScript DOM manipulation.",
     tech: ["HTML", "CSS", "JavaScript"],
     color: "from-soft-yellow to-soft-blue",
-    icon: Calculator,
+    logo: projectCalculator,
   },
 ];
 
@@ -77,7 +84,7 @@ const ProjectsSection = () => {
             >
               {/* Gradient header */}
               <div className={`h-36 bg-gradient-to-br ${project.color} flex items-center justify-center`}>
-                <project.icon size={40} className="text-primary/40 group-hover:scale-110 transition-transform" />
+                <img src={project.logo} alt={project.title} className="w-16 h-16 object-contain group-hover:scale-110 transition-transform" />
               </div>
 
               <div className="p-6">
