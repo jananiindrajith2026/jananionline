@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
-import { Palette, Code, Smartphone, Layout } from "lucide-react";
+
+import serviceWebdesign from "@/assets/service-webdesign.png";
+import serviceFrontend from "@/assets/service-frontend.png";
+import serviceResponsive from "@/assets/service-responsive.png";
+import serviceUidesign from "@/assets/service-uidesign.png";
 
 const services = [
-  { icon: Palette, title: "Basic Web Design", desc: "Creating visually appealing and clean web designs that prioritize user experience.", bg: "bg-soft-purple", iconColor: "text-primary" },
-  { icon: Code, title: "Front-End Development", desc: "Building structured web pages using HTML, CSS, and basic JavaScript.", bg: "bg-soft-yellow", iconColor: "text-accent-foreground" },
-  { icon: Smartphone, title: "Responsive Websites", desc: "Ensuring websites look great and work seamlessly on all screen sizes.", bg: "bg-soft-blue", iconColor: "text-primary" },
-  { icon: Layout, title: "User-Friendly Design", desc: "Focusing on intuitive layouts and clear navigation for better usability.", bg: "bg-soft-purple", iconColor: "text-hero-pink" },
+  { logo: serviceWebdesign, title: "Basic Web Design", desc: "Creating visually appealing and clean web designs that prioritize user experience.", bg: "bg-soft-purple" },
+  { logo: serviceFrontend, title: "Front-End Development", desc: "Building structured web pages using HTML, CSS, and basic JavaScript.", bg: "bg-soft-yellow" },
+  { logo: serviceResponsive, title: "Responsive Websites", desc: "Ensuring websites look great and work seamlessly on all screen sizes.", bg: "bg-soft-blue" },
+  { logo: serviceUidesign, title: "User-Friendly Design", desc: "Focusing on intuitive layouts and clear navigation for better usability.", bg: "bg-soft-purple" },
 ];
 
 const ServicesSection = () => {
@@ -41,8 +45,8 @@ const ServicesSection = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="p-7 rounded-2xl bg-card border border-border card-hover group"
             >
-              <div className={`w-14 h-14 rounded-2xl ${service.bg} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
-                <service.icon size={24} className={service.iconColor} />
+              <div className={`w-14 h-14 rounded-2xl ${service.bg} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform overflow-hidden`}>
+                <img src={service.logo} alt={service.title} className="w-10 h-10 object-contain" />
               </div>
               <h3 className="font-sans font-bold text-foreground text-lg mb-2">{service.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{service.desc}</p>
