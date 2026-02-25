@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Folder } from "lucide-react";
+import { ExternalLink, Github, Folder, Layout, ShoppingCart, BookOpen, Image, Calculator } from "lucide-react";
 
 const projects = [
   {
@@ -7,18 +7,42 @@ const projects = [
     description: "A clean, responsive personal portfolio page built to showcase projects and skills with a minimal design approach.",
     tech: ["HTML", "CSS"],
     color: "from-primary/10 to-hero-pink/10",
+    icon: Folder,
   },
   {
     title: "Product Landing Page",
     description: "A simple static landing page with structured layout, call-to-action sections, and responsive design.",
     tech: ["HTML", "CSS"],
     color: "from-accent/20 to-soft-yellow",
+    icon: Layout,
   },
   {
     title: "Responsive Blog Layout",
     description: "A practice project focused on responsive grid layouts, typography, and content-first web design.",
     tech: ["HTML", "CSS"],
     color: "from-soft-blue to-soft-purple",
+    icon: BookOpen,
+  },
+  {
+    title: "E-Commerce Product Page",
+    description: "A static product showcase page with image gallery, pricing section, and add-to-cart button layout.",
+    tech: ["HTML", "CSS"],
+    color: "from-hero-pink/10 to-accent/10",
+    icon: ShoppingCart,
+  },
+  {
+    title: "Photo Gallery Website",
+    description: "A responsive image gallery with grid and masonry-style layouts, hover effects, and lightbox-inspired design.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    color: "from-soft-purple to-primary/10",
+    icon: Image,
+  },
+  {
+    title: "Simple Calculator",
+    description: "An interactive calculator with basic arithmetic operations, built to practice JavaScript DOM manipulation.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    color: "from-soft-yellow to-soft-blue",
+    icon: Calculator,
   },
 ];
 
@@ -53,7 +77,7 @@ const ProjectsSection = () => {
             >
               {/* Gradient header */}
               <div className={`h-36 bg-gradient-to-br ${project.color} flex items-center justify-center`}>
-                <Folder size={40} className="text-primary/40 group-hover:scale-110 transition-transform" />
+                <project.icon size={40} className="text-primary/40 group-hover:scale-110 transition-transform" />
               </div>
 
               <div className="p-6">
