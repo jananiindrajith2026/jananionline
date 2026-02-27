@@ -84,7 +84,7 @@ const ProjectsSection = () => {
             >
               {/* Gradient header */}
               <div className={`h-36 bg-gradient-to-br ${project.color} flex items-center justify-center`}>
-                <img src={project.logo} alt={project.title} className="w-16 h-16 object-contain group-hover:scale-110 transition-transform brightness-110" />
+                <img src={project.logo} alt={project.title} className="w-16 h-16 object-contain group-hover:scale-110 transition-transform brightness-110 animate-float" style={{ animationDelay: `${i * 0.4}s` }} />
               </div>
 
               <div className="p-6">
