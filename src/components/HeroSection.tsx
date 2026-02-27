@@ -45,9 +45,17 @@ const HeroSection = () => {
               <span className="text-xs font-medium text-muted-foreground">Open to opportunities</span>
             </motion.div>
 
+            <motion.p
+              initial={{ opacity: 0, letterSpacing: "0.1em" }}
+              animate={{ opacity: 1, letterSpacing: "0.3em" }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-sm font-semibold tracking-[0.3em] uppercase text-primary/60 mb-2"
+            >
+              Janani I
+            </motion.p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-foreground leading-[1.1] mb-3">
               Hi, I'm{" "}
-              <span className="gradient-text">Janani I</span>
+              <span className="gradient-text">Janani</span>
             </h1>
 
             <motion.p
