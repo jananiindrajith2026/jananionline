@@ -22,8 +22,8 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-card/90 backdrop-blur-xl shadow-md" : "bg-transparent"}`}>
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <button onClick={() => scrollTo("home")} className="font-display text-xl font-bold text-foreground">
-          Janani<span className="text-primary">.</span>
+        <button onClick={() => scrollTo("home")} className="font-display text-xl font-bold text-foreground flex items-center gap-1">
+          Janani <span className="text-primary">I</span><span className="text-primary">.</span>
         </button>
 
         <div className="hidden md:flex items-center gap-8">
