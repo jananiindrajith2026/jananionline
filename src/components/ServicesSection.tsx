@@ -46,7 +46,7 @@ const ServicesSection = () => {
               className="p-7 rounded-2xl bg-card border border-border card-hover group"
             >
               <div className={`w-14 h-14 rounded-2xl ${service.bg} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform overflow-hidden border border-border`}>
-                <img src={service.logo} alt={service.title} className="w-10 h-10 object-contain brightness-125" />
+                <img src={service.logo} alt={service.title} className="w-10 h-10 object-contain brightness-125 animate-float" style={{ animationDelay: `${i * 0.5}s` }} />
               </div>
               <h3 className="font-sans font-bold text-foreground text-lg mb-2">{service.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{service.desc}</p>
