@@ -89,13 +89,13 @@ const AboutSection = () => {
 
             {/* Mini stats */}
             <div className="grid grid-cols-2 gap-4 pt-4">
-              <div className="p-4 rounded-2xl bg-soft-purple text-center">
+              <div className="p-4 rounded-2xl bg-soft-purple text-center border border-border">
                 <p className="text-2xl font-bold text-primary">5+</p>
-                <p className="text-xs text-muted-foreground mt-1">Practice Projects</p>
+                <p className="text-xs text-foreground/70 mt-1">Practice Projects</p>
               </div>
-              <div className="p-4 rounded-2xl bg-soft-yellow text-center">
-                <p className="text-2xl font-bold text-accent-foreground">4+</p>
-                <p className="text-xs text-muted-foreground mt-1">Technologies Learning</p>
+              <div className="p-4 rounded-2xl bg-soft-yellow text-center border border-border">
+                <p className="text-2xl font-bold text-accent">4+</p>
+                <p className="text-xs text-foreground/70 mt-1">Technologies Learning</p>
               </div>
             </div>
           </motion.div>
